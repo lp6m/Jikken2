@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
 	/*標準入力からURLを受け取る*/
 	while(printf("Input URL:\n"),fgets(url,GET_URL_LENGTH,stdin)){
 		/*ホスト,ポート,パスを切り出す*/
-		if(!GetSocketParamsByURL(url)){
+		if(GetSocketParamsByURL(url)!=1){
 			/*URLが無効であれば即終了*/
 			fprintf(stderr, "Invalid URL\n");
 			exit(1);
@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
 		//サーバに送信するリクエストを作成
 		char reqlines[NUMSTR][GET_URL_LENGTH];
 		sprintf(reqlines[0],"GET /%s HTTP/1.1\r\n",path);
-		sprintf(reqlines[1],"HOST: %s\r\n",host);
+		sprintf(reqlines[1],"Host: %s\r\n",host);
 		sprintf(reqlines[2],"\r\n");
 
 		//サーバーにリクエストを送信
