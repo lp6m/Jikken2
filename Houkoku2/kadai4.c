@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	char host[2000];
 	int RequestValdFlag = 0;
 	FILE *fp;
-	int i, s, ns, port, pid;
+	int s, ns, port, pid;
 
 	struct sockaddr_in sin, fsin;
 
@@ -106,13 +106,10 @@ int main(int argc, char* argv[])
 		  		}
 		  		fclose(fp2);
 			}
-			close(ns);
-			fclose(fp);
 			exit(0);
 		}else{
 			//親プロセスは次のクライアントからの要求を待つ
 			close(ns);
-			fclose(fp);
 		}
 	}
 	return 0;
